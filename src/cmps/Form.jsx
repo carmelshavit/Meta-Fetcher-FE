@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
-// import { fetchMetadata } from '../service/form.service';
+import { FaPlus } from 'react-icons/fa';
 
 function UrlForm() {
 	const {
@@ -49,64 +49,73 @@ function UrlForm() {
 		const results = await Promise.all(
 			data.urls.map((urlObj) => fetchMetadata(urlObj.url))
 		);
-		console.log('Results:', results); // Add logging
-		console.log(metadata);
-		setMetadata(results.filter((result) => result !== null)); // Filter out any null results
+		console.log('Results:', results);
+		setMetadata(results.filter((result) => result !== null));
 	};
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				{fields.map((field, index) => (
-					<div key={field.id}>
-						<input
-							type="url"
-							placeholder={`URL ${index + 1}`}
-							{...register(`urls.${index}.url`, {
-								required: 'This field is required',
-								pattern: {
-									value: /^https?:\/\/[^\s$.?#].[^\s]*$/,
-									message: 'Invalid URL',
-								},
-							})}
-						/>
-						{errors.urls?.[index] && <p>{errors.urls[index].message}</p>}
-					</div>
-				))}
-
-				<button
-					className="url-btn"
-					type="button"
-					onClick={() => append({ url: '' })}>
-					Add another URL
-				</button>
-
-				<button className="submit-btn" type="submit">
-					Submit
-				</button>
-			</form>
-
-			{/* Display the fetched metadata */}
-			<div>
-				{metadata.map((meta, index) => (
-					<div
-						key={index}
-						style={{
-							border: '1px solid #ccc',
-							padding: '10px',
-							margin: '10px 0',
-						}}>
-						<h3>{meta.title}</h3>
-						<p>{meta.description}</p>
-						{meta.image && (
-							<img
-								src={meta.image}
-								alt={meta.title}
-								style={{ maxWidth: '100%' }}
+		<div className="flex justify-center items-center min-h-screen bg-gray-100">
+			<div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
+				<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+					{fields.map((field, index) => (
+						<div key={field.id} className="flex flex-col">
+							<input
+								type="url"
+								placeholder={`URL ${index + 1}`}
+								className="border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+								{...register(`urls.${index}.url`, {
+									required: 'This field is required',
+									pattern: {
+										value: /^https?:\/\/[^\s$.?#].[^\s]*$/,
+										message: 'Invalid URL',
+									},
+								})}
 							/>
-						)}
+							{errors.urls?.[index] && (
+								<p className="text-red-500 text-sm mt-1">
+									{errors.urls[index].message}
+								</p>
+							)}
+						</div>
+					))}
+
+					<div className="flex justify-between items-center space-x-4">
+						<button
+							className="bg-blue-500 text-white px-4 py-2 rounded flex items-center hover:bg-blue-600 transition"
+							type="button"
+							onClick={() => append({ url: '' })}>
+							<FaPlus className="mr-2" /> Add another URL
+						</button>
+
+						<button
+							className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
+							type="submit">
+							Submit
+						</button>
 					</div>
-				))}
+				</form>
+
+				{/* Display the fetched metadata */}
+				<div className="mt-8 space-y-4">
+					{metadata.map((meta, index) => (
+						<div
+							key={index}
+							className="border border-gray-300 rounded p-4 bg-white shadow">
+							{/* Title for each result section */}
+							<h2 className="text-xl font-bold mb-4">Result {index + 1}</h2>
+
+							<h3 className="text-lg font-semibold">{meta.title}</h3>
+							<p className="text-gray-700">{meta.description}</p>
+							{meta.image && (
+								<img
+									src={meta.image}
+									alt={meta.title}
+									className="mt-4 max-w-xs mx-auto rounded"
+								/>
+							)}
+						</div>
+					))}
+				</div>
 			</div>
 		</div>
 	);
