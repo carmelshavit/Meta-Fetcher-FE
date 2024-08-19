@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # Meta-Fetcher-FE - Fetch Metadata from URLs
 
 Meta-Fetcher-FE is a simple full-stack application designed to fetch and display metadata (title, description, and image) from a list of URLs. This project was developed to provide a streamlined way for users to gather metadata from multiple web pages efficiently.
@@ -6,9 +8,8 @@ You can visit our live app at Meta-Fetcher-FE on GitHub Pages. Please be patient
 
 If you prefer to run Meta-Fetcher-FE locally, follow the installation instructions mentioned in the [Getting Started] section.
 
-
-
 ## Features
+
 - **Metadata Fetching**: Fetches and displays metadata (title, description, and image) from any provided URL.
 
 - **Simple Interface**: Easy-to-use interface for inputting URLs and viewing the results.
@@ -20,30 +21,38 @@ If you prefer to run Meta-Fetcher-FE locally, follow the installation instructio
 - **Tailwind CSS**: Styled using Tailwind CSS for a clean and modern look.
 
 ## Getting Started
+
 To install and run Meta-Fetcher-FE on your local machine, follow these steps:
 
 ## Prerequisites
+
 - Node.js and npm installed on your system.
+
 ## Installation
-- Clone the repository:
 
-```bash
-Copy code
-git clone https://github.com/carmelshavit/Meta-Fetcher-FE.git
-Navigate to the project directory and install dependencies:
+1. Clone the repository:
 
-```bash
-Copy code
-cd Meta-Fetcher-FE
-npm install
-Run the development server:
+   ```bash
+   Copy code
+   git clone https://github.com/carmelshavit/Meta-Fetcher-FE.git
+   Navigate to the project directory and install dependencies:
 
-```bash
-Copy code
-npm run dev
-Meta-Fetcher-FE will be accessible at http://localhost:5173/.
+   Copy code
+   cd Meta-Fetcher-FE
+   npm install
+
+   ```
+
+2. Run the development server:
+
+   ```bash
+   Copy code
+   npm run dev
+   Meta-Fetcher-FE will be accessible at http://localhost:5173/.
+   ```
 
 ## Contact
+
 If you have questions, feedback, or need support, feel free to reach out to me:
 
 Carmel Shavit: Email | LinkedIn
