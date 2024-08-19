@@ -41,9 +41,16 @@ To install and run Meta-Fetcher-FE on your local machine, follow these steps:
    cd Meta-Fetcher-FE
    npm install
 
-   ```
+2. Navigate to both frontend and backend directories and install dependencies:
+   ```bash
+cd Meta-Fetcher-FE
+npm install
 
-2. Run the development server:
+cd ../Meta-Fetcher-BE
+npm install
+
+
+3. Run the development server:
 
    ```bash
    Copy code
